@@ -1,12 +1,12 @@
-// app/layout.tsx — Root Layout v2
+// app/layout.tsx — Updated for mobile responsive
 import type { Metadata } from 'next';
 import './globals.css';
 import { SideNav } from '@/components/nav/SideNav';
 import { TopBar } from '@/components/nav/TopBar';
 import { InsightPanel } from '@/components/insight/InsightPanel';
-import { CommandPalette } from '@/components/CommandPalette';
 import { EventBusProvider } from '@/lib/events/EventBusProvider';
 import { QueryProvider } from '@/lib/QueryProvider';
+import { CommandPalette } from '@/components/CommandPalette';
 
 export const metadata: Metadata = {
   title: 'HIRE AGENT OS — Autonomous Talent Intelligence System',
@@ -21,20 +21,32 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <QueryProvider>
           <EventBusProvider>
             <div className="flex h-screen w-screen">
+              {/* Left Navigation */}
               <SideNav />
-              <div className="flex flex-1 flex-col overflow-hidden" style={{ marginLeft: 'var(--nav-width)' }}>
+
+              {/* Main Content Area */}
+              <div className="flex flex-1 flex-col overflow-hidden lg:ml-[var(--nav-width)]">
+                {/* Top Bar */}
                 <TopBar />
+
+                {/* Center + Right Panel */}
                 <div className="flex flex-1 overflow-hidden">
+                  {/* Center Content */}
                   <main className="flex-1 overflow-y-auto overflow-x-hidden grid-bg scanline relative">
-                    <div className="relative z-10 p-6">
+                    <div className="relative z-10 p-4 sm:p-6 pt-16 lg:pt-6">
                       {children}
                     </div>
                   </main>
-                  <InsightPanel />
+
+                  {/* Right Insight Panel — hidden on mobile */}
+                  <div className="hidden xl:block">
+                    <InsightPanel />
+                  </div>
                 </div>
               </div>
             </div>
-            {/* Command Palette — rendered at root level for ⌘K access */}
+
+            {/* Command Palette */}
             <CommandPalette />
           </EventBusProvider>
         </QueryProvider>

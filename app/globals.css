@@ -187,6 +187,16 @@ body {
   }
 }
 
+/* Slide In Left */
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 200ms ease-out;
+}
+
 /* Focus Styles */
 :focus-visible {
   outline: 2px solid var(--accent);

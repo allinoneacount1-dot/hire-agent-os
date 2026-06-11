@@ -1,4 +1,4 @@
-// components/nav/TopBar.tsx
+// components/nav/TopBar.tsx — Mobile Responsive
 'use client';
 
 import { Bell, Search, Settings, Wallet } from 'lucide-react';
@@ -9,21 +9,21 @@ export function TopBar() {
 
   return (
     <header
-      className="flex h-16 items-center justify-between border-b border-border bg-bg-surface/60 backdrop-blur-glass px-6"
+      className="flex h-16 items-center justify-between border-b border-border bg-bg-surface/60 backdrop-blur-glass px-4 sm:px-6 pl-16 lg:pl-6"
       style={{ height: 'var(--topbar-height)' }}
     >
       {/* Search */}
       <div className="flex-1 max-w-xl">
         <div
           className={`flex items-center gap-2 rounded-lg border bg-bg-card/50 px-3 py-2 transition-all ${
-            searchFocused ? 'border-accent/40 shadow-glow-cyan' : 'border-border'
+            searchFocused ? 'border-accent/40' : 'border-border'
           }`}
         >
-          <Search className="h-4 w-4 text-text-muted" />
+          <Search className="h-4 w-4 text-text-muted shrink-0" />
           <input
             type="text"
             placeholder="Search candidates, skills, roles..."
-            className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted outline-none"
+            className="flex-1 bg-transparent text-sm text-text-primary placeholder:text-text-muted outline-none min-w-0"
             onFocus={() => setSearchFocused(true)}
             onBlur={() => setSearchFocused(false)}
           />
@@ -34,7 +34,7 @@ export function TopBar() {
       </div>
 
       {/* Right Actions */}
-      <div className="flex items-center gap-3 ml-4">
+      <div className="flex items-center gap-2 sm:gap-3 ml-3">
         {/* Notifications */}
         <button className="relative flex h-9 w-9 items-center justify-center rounded-lg border border-border bg-bg-card/50 text-text-secondary hover:text-text-primary hover:border-accent/25 transition-colors">
           <Bell className="h-4 w-4" />
@@ -43,10 +43,10 @@ export function TopBar() {
           </span>
         </button>
 
-        {/* Wallet Connect */}
-        <button className="flex items-center gap-2 rounded-lg border border-accent/25 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10 transition-colors">
+        {/* Wallet Connect — hidden on small screens */}
+        <button className="hidden sm:flex items-center gap-2 rounded-lg border border-accent/25 bg-accent/5 px-3 py-2 text-sm font-medium text-accent hover:bg-accent/10 transition-colors">
           <Wallet className="h-4 w-4" />
-          <span className="hidden sm:inline">Connect</span>
+          <span className="hidden md:inline">Connect</span>
         </button>
 
         {/* Settings */}
@@ -55,7 +55,7 @@ export function TopBar() {
         </button>
 
         {/* Avatar */}
-        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary/20 border border-secondary/30 text-secondary text-xs font-bold">
+        <div className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full bg-secondary/20 border border-secondary/30 text-secondary text-xs font-bold">
           HA
         </div>
       </div>
