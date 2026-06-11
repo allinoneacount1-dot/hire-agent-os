@@ -1,9 +1,10 @@
-// app/layout.tsx — Root Layout: Shell with Left Nav + Center + Right Insight Panel
+// app/layout.tsx — Root Layout v2
 import type { Metadata } from 'next';
 import './globals.css';
 import { SideNav } from '@/components/nav/SideNav';
 import { TopBar } from '@/components/nav/TopBar';
 import { InsightPanel } from '@/components/insight/InsightPanel';
+import { CommandPalette } from '@/components/CommandPalette';
 import { EventBusProvider } from '@/lib/events/EventBusProvider';
 import { QueryProvider } from '@/lib/QueryProvider';
 
@@ -20,28 +21,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <QueryProvider>
           <EventBusProvider>
             <div className="flex h-screen w-screen">
-              {/* Left Navigation */}
               <SideNav />
-
-              {/* Main Content Area */}
               <div className="flex flex-1 flex-col overflow-hidden" style={{ marginLeft: 'var(--nav-width)' }}>
-                {/* Top Bar */}
                 <TopBar />
-
-                {/* Center + Right Panel */}
                 <div className="flex flex-1 overflow-hidden">
-                  {/* Center Content */}
                   <main className="flex-1 overflow-y-auto overflow-x-hidden grid-bg scanline relative">
                     <div className="relative z-10 p-6">
                       {children}
                     </div>
                   </main>
-
-                  {/* Right Insight Panel */}
                   <InsightPanel />
                 </div>
               </div>
             </div>
+            {/* Command Palette — rendered at root level for ⌘K access */}
+            <CommandPalette />
           </EventBusProvider>
         </QueryProvider>
       </body>
