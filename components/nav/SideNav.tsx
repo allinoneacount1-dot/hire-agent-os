@@ -12,6 +12,7 @@ import {
   MessageSquare,
   Swords,
   BrainCircuit,
+  Settings,
   Zap,
   X,
   Menu,
@@ -26,6 +27,7 @@ const navItems = [
   { href: '/outreach', label: 'Outreach', icon: MessageSquare },
   { href: '/interview-lab', label: 'Interview Lab', icon: Swords },
   { href: '/feedback-engine', label: 'Feedback Engine', icon: BrainCircuit },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export function SideNav() {
