@@ -104,7 +104,7 @@ export interface HireOutcomeEvent extends BaseEvent {
 export interface SystemFeedbackEvent extends BaseEvent {
   type: 'system.feedback';
   payload: {
-    weight_updates: Array<{ feature: string; old_weight: number; new_weight: number }>;
+    weight_updates: Array<{ feature: string; oldWeight: number; newWeight: number }>;
     bias_detected: string[];
     insights: string[];
   };
